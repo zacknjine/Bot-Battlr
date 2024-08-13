@@ -37,4 +37,7 @@ For this project, you’ll be building a React application with the following fe
 2. **Start the localhost** by running:
      npm run dev
 
+    # NB..
+    You have to refresh your page so as to see your bot army and discharged bots.
+
 ### HAVE FUN CODING!!
