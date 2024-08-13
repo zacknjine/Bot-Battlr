@@ -1,27 +1,40 @@
-const BotCollection = ({ data, dischargeBot, enlistBot}) => {
+import { useState } from 'react';
+
+const BotCollection = ({ data, dischargeBot, enlistBot }) => {
+
+  const deleteBot = async (botId) => {
+    try {
+      await fetch(`http://localhost:3000/bots/${botId}`, {
+        method: 'DELETE',
+      });
+      
+      dischargeBot(botId);
+    } catch (error) {
+      console.error('Failed to delete the bot:', error);
+    }
+  };
+
   return (
-    <div className="collection">
+    <div className= "collection">
       {data.map((bot, i) => (
-        // parent
-        <div onClick={() => enlistBot(bot)} key={i} className= "bot-card">
+        <div
+          onClick={() => enlistBot(bot)}
+          key={i}
+          className= "bot-card"
+        >
           <img src={bot.avatar_url} alt="" />
           <p>{bot.name}</p>
           <p>{bot.bot_class}</p>
           <small>{bot.catchphrase}</small>
           <div>
-            <div>Damage : {bot.damage}</div>
-            <div>armor : {bot.armor}</div>
-            <div>health : {bot.health}</div>
-
-            
+            <div>Damage: {bot.damage}</div>
+            <div>Armor: {bot.armor}</div>
+            <div>Health: {bot.health}</div>
           </div>
-             
-         
-          {/* child */}
-          <button 
-            onClick={(e) => { 
+          <button
+            onClick={(e) => {
               e.stopPropagation();
-              dischargeBot(bot.id);
+              deleteBot(bot.id); 
             }}
           >
             x

@@ -2,7 +2,7 @@ const BotArmy = ({ myBots, releaseBot }) => {
   return (
     <div className= "collection">
       {myBots.map((bot, i) => (
-        <div onClick={() => releaseBot(bot.id)} key={i} className="bot-card">
+        <div onClick={() => releaseBot(bot.id)} key={i} className= "bot-card">
           <img src={bot.avatar_url} alt="" />
           <p>{bot.name}</p>
           <p>{bot.bot_class}</p>
